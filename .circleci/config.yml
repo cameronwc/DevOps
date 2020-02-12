@@ -12,7 +12,7 @@ jobs:
       - run:
           command: |
             source venv/bin/activate
-            cd DevOps
+            ls
             pytest
 workflows:
   version: 2
