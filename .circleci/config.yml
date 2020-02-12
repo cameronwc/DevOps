@@ -2,20 +2,18 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7
-        environment:
-          PIPENV_VENV_IN_PROJECT: true
-      steps:
-        - checkout
-        - run:
-          name: Instal Python dependencies in a venv
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
-        - run:
-            command: |
-              . venv/bin/activate
-              pytest
+    steps:
+      - checkout
+      - run:
+        name: Install Python dependencies in a venv
+        command: |
+          python3 -m venv venv
+          . venv/bin/activate
+          pip install -r requirements.txt
+      - run:
+        command: |
+        . venv/bin/activate
+        pytest
 workflows:
   version: 2.1
   build_and_test:
