@@ -18,15 +18,18 @@ jobs:
           command: |
             source venv/bin/activate
             pytest
+  deploy:
+    requires:
+      - build
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
 
 workflows:
   version: 2
   heroku_deploy:
     jobs:
       - build
-      - heroku/deploy-via-git:
-        requires:
-          - build
-        filters:
-          branches:
-            only: master
+      - deploy
