@@ -18,7 +18,7 @@ A project to play with devops tooling
 
 ## Development
 
-Change directories to root and run
+Change directories to root of the repository and run
 ```
 docker-compose build && docker-compose up
 ```
@@ -29,7 +29,7 @@ The following urls are available:
 
 ## Testing
 
-Change directories to root and run
+Change directories to root of the repository and run
 ```
 pytest
 ```
