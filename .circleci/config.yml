@@ -10,17 +10,15 @@ jobs:
     steps:
       - checkout
       - run:
-          command: |
-            python3 -m venv venv
-            source venv/bin/activate
-            pip install -r flask_app/requirements.txt
+        command: |
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r flask_app/requirements.txt
       - run:
-          command: |
-            source venv/bin/activate
-            pytest
+        command: |
+          source venv/bin/activate
+          pytest
   deploy:
-    requires:
-      - build
     executor: heroku/default
     steps:
       - checkout
@@ -32,4 +30,6 @@ workflows:
   heroku_deploy:
     jobs:
       - build
-      - deploy
+      - deploy:
+          requires:
+            - build
